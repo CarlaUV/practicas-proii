@@ -1,8 +1,10 @@
-package ejercicio4;
+package ejercicio3;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
+import proii.ejercicio3.Cuenta;
 
 public class CuentaTest {
     @Test
@@ -22,5 +24,21 @@ public class CuentaTest {
 
         assertEquals(600, cuenta.getSaldo(), 0.01);
         assertEquals(saldoTotalInicial+600+100+500, Cuenta.getSaldoTotalBanco(), 0.01);
-    } 
+    }
+
+    @Test
+    public void saldoInicialNegativoTest() {
+        IllegalArgumentException ex = assertThrows(
+            IllegalArgumentException.class,
+            () -> new Cuenta(-100));
+        assertEquals("El saldo inicial debe ser mayor que 0", ex.getMessage());
+    }
+
+    @Test
+    public void saldoInsuficienteTest() {
+        IllegalArgumentException ex = assertThrows(
+            IllegalArgumentException.class,
+            () -> new Cuenta(100).retirar(200));
+        assertEquals("Saldo insuficiente", ex.getMessage());
+    }
 }
