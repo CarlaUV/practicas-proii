@@ -85,7 +85,7 @@ public class Ejercicio4 {
         // Comprobar si el vector esta lleno.
         // En el caso de que este lleno lanzar una excepción
         // En el caso de que no este lleno leer el deportista del teclado y añadirlo al vector
-        if(club.length == mumDeportistas) throw new IndexOutOfBoundsException("Se ha alcanzado el número máximo de deportistas en el club");
+        if(club.length == numDeportistas) throw new IndexOutOfBoundsException("Se ha alcanzado el número máximo de deportistas en el club");
             club[numDeportistas] = leeDeportista(teclado);
     }
 
@@ -93,7 +93,7 @@ public class Ejercicio4 {
         StringBuilder toReturn = new StringBuilder();
         // Comprobar si el vector tiene deportistas
         // Si tiene recorrer los deportistas del vector y concatener sus datos en el StringBuilder
-        if(mumDeportistas == 0)
+        if(numDeportistas == 0)
             toReturn.append("No hay deportistas en el club");
 
         for (int i = 0; i < club.length; i++) {
