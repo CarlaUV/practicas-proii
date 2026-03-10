@@ -129,6 +129,13 @@ public class Ejercicio4 {
             total = 0;
         }
 
+        //alternativa bucle anterior
+        int totalcategorias[] = new int[Categoria.values().length];
+        for (int i = 0; i < numDeportistas; i++) {
+            int num = club[i].getCategoria().ordinal();
+            totalcategorias[num]+=1;
+        }
+
         return toReturn.toString();
     }
 
