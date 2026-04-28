@@ -1,4 +1,4 @@
-package Ejercicio2;
+package ejercicio2;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
