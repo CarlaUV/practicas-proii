@@ -1,13 +1,15 @@
 package ejercicio2;
 
+import ejercicio1.Autor;
+
 public class ComunicacionEnCongreso extends Publicacion{
     private final String nombreCongreso;
     private final String ciudad;
     private final String pais;
 
-    public ComunicacionEnCongreso(String institucion, String titulo,
+    public ComunicacionEnCongreso(String institucion, String titulo, int numCitas, Autor primerAutor,
             int anho, String nombreCongreso, String ciudad, String pais) {
-        super(titulo, anho);
+        super(titulo, anho, numCitas, primerAutor);
         this.nombreCongreso = nombreCongreso;
         this.ciudad = ciudad;
         this.pais = pais;
@@ -21,6 +23,10 @@ public class ComunicacionEnCongreso extends Publicacion{
     }
     public String getPais() {
         return pais;
+    }
+    @Override
+    public double getIndice() {
+        return super.getIndice()*0.6;
     }
 
     @Override

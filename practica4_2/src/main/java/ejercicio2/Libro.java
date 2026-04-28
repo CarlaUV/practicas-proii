@@ -1,12 +1,14 @@
 package ejercicio2;
 
+import ejercicio1.Autor;
+
 public class Libro extends Publicacion{ 
     private final String editorial;
     private final String lugar;
 
-    public Libro(String titulo, int anho,
+    public Libro(String titulo, int anho, int numCitas, Autor primerAutor,
             String editorial, String lugar) {
-        super(titulo, anho);
+        super(titulo, anho, numCitas, primerAutor);
         this.editorial = editorial;
         this.lugar = lugar;
     }
@@ -16,6 +18,11 @@ public class Libro extends Publicacion{
     }
     public String getLugar() {
         return lugar;
+    }
+
+    @Override
+    public double getIndice() {
+        return super.getIndice()*0.8;
     }
 
     @Override

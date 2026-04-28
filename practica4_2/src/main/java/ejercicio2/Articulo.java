@@ -1,15 +1,18 @@
 package ejercicio2;
 
+import ejercicio1.Autor;
+import ejercicio4.PaginasIncorretasException;
+
 public class Articulo extends Publicacion{
     private final String nombreRevista;
     private final int volumen;
     private final int paginaInicial;
     private final int paginaFinal;
     
-    public Articulo(String nombreRevista, int volumen, int paginaInicial, int paginaFinal, String titulo, int anho) {
-        super(titulo, anho);
+    public Articulo(String nombreRevista, int volumen, int paginaInicial, int paginaFinal, String titulo, int anho, int numCitas, Autor primerAutor) {
+        super(titulo, anho, numCitas, primerAutor);
         if(volumen < 0) throw new IllegalArgumentException("El volumnen no puede ser negativo");
-        if(paginaInicial < 0 || paginaFinal < paginaInicial) throw new IllegalArgumentException("Las páginas %s (inicial) y %s (final) son incrretas".formatted(paginaInicial, paginaFinal));
+        if(paginaInicial < 0 || paginaFinal < paginaInicial) throw new PaginasIncorretasException(paginaInicial, paginaFinal);
         if(nombreRevista.isBlank() || nombreRevista == null) throw new IllegalArgumentException("El nombre de la revista no puede estar en blanco");
         this.nombreRevista = nombreRevista;
         this.volumen = volumen;
@@ -28,6 +31,10 @@ public class Articulo extends Publicacion{
     }
     public int getPaginaFinal() {
         return paginaFinal;
+    }
+    @Override
+    public double getIndice() {
+        return super.getIndice()*1;
     }
 
     @Override
